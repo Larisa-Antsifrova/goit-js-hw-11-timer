@@ -42,7 +42,7 @@ class CountdownTimer {
 // Создаём таймер отсчёта до Нового года
 const countdownTillNewYear = new CountdownTimer({
   selector: "timer-1",
-  targetDate: new Date("Dec 31, 2020"),
+  targetDate: new Date("Jan 1, 2021"),
 });
 
 // Вызываем таймер, чтобы при загрузке страницы пользователь сразу видел отсчёт
