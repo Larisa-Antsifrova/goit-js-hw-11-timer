@@ -9,17 +9,25 @@ class CountdownTimer {
     this.secs = this.timer.querySelector('span[data-value="secs"]');
   }
 
-  // Метод, который с интервалом обновляет таймер на странице
+  // Метод, который с интервалом отсчитывает время
   start() {
-    setInterval(() => {
-      let time = this.targetDate - Date.now();
-      const { days, hours, mins, secs } = this.calculateTime(time);
+    // Функция обновления элементов на странице вызвана сразу, чтобы не "мелькали" значения прописанные в HTML
+    this.updateTimerOutput();
 
-      this.days.textContent = days;
-      this.hours.textContent = hours;
-      this.mins.textContent = mins;
-      this.secs.textContent = secs;
+    setInterval(() => {
+      this.updateTimerOutput();
     }, 1000);
+  }
+
+  // Функция для обновления значений элментов на странице
+  updateTimerOutput() {
+    let time = this.targetDate - Date.now();
+    const { days, hours, mins, secs } = this.calculateTime(time);
+
+    this.days.textContent = days;
+    this.hours.textContent = hours;
+    this.mins.textContent = mins;
+    this.secs.textContent = secs;
   }
 
   // Вспомогательные функции для подсчёта дней, часов, минут, секунд и форматирования
